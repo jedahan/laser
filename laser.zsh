@@ -6,9 +6,10 @@ function laser() {
   test -f $file || { echo "file '$file' not found" && return 3 }
   [[ $file =~ .svg$ ]] && convert $file ${file/\.svg/\.pdf}
   file=${file/\.svg/\.pdf}
+  [[ $file =~ .pdf$ ]] || { echo "file '$file' not pdf" && return 4 }
   set -A cardboard --raster-power 80 --raster-speed 100 --frequency 20 --vector-power 100 --vector-speed 4
 
-  test -v $preset || { echo "preset '$preset' not found" && return 4 }
+  test -v $preset || { echo "preset '$preset' not found" && return 5 }
   local args=${${(P)preset}}
 
   echo "pd2flaser $args $file"
