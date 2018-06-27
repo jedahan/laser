@@ -12,5 +12,5 @@ function laser() {
   test -v $preset || { echo "preset '$preset' not found" && return 5 }
   local args=${${(P)preset}}
 
-  echo "pd2flaser $args $file"
+  pd2flaser $args $file
 }
